@@ -22,6 +22,21 @@ form * {
   height: 2.5rem;
   padding: 0 0.5rem;
 }
+.wow-form {
+  display: grid;
+  grid-template-columns: 12fr 1fr 10fr;
+}
+
+.tasten {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px;
+  margin: 0.5rem;
+}
+
+.button {
+  text-align: center;
+  font-size: 1.5rem;
+}
 
 .error {
   color: red;

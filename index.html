@@ -29,11 +29,35 @@
     </form>
     <p class="error" data-js="error-display"></p>
     <h2>Division only</h2>
-    <form>
+    <form data-js="form2">
       <input type="number" name="dividend" placeholder="dividend" required />
       /
       <input type="number" name="divisor" placeholder="divisor" required />
-      <button>=</button>
+      <button type="submit" data-js="button-divide">=</button>
+      <div name="result2" data-js="division-result">...</div>
     </form>
+    <p class="error" data-js="error-display2"></p>
+    <h2>Better Calculator (unfinished)</h2>
+    <form data-js="better-form">
+      <input name="betterInput" placeholder="input" required />
+      <button type="submit" data-js="button-better">=</button>
+      <div name="result3" data-js="better-result">...</div>
+    </form>
+    <p class="error" data-js="error-display3"></p>
+    <h2>Wow Calculator (unfinished)</h2>
+    <form class="wow-form" data-js="wow-form">
+      <input name="wowInput" placeholder="input" required />
+      <button type="submit" data-js="wow-button">=</button>
+      <div name="wowResult" data-js="wow-result">...</div>
+      <tasten class="tasten">
+        <button type="button" class="button" data-js="plus-button">+</button>
+        <button type="button" class="button" data-js="minus-button">-</button>
+        <button type="button" class="button" data-js="multiply-button">
+          *
+        </button>
+        <button type="button" class="button" data-js="divide-button">/</button>
+      </tasten>
+    </form>
+    <p class="error" data-js="error-display3"></p>
   </body>
 </html>
