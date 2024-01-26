@@ -59,6 +59,7 @@ const betterForm = document.querySelector("[data-js=better-form]");
 const betterResult = document.querySelector("[data-js=better-result]");
 const errorDisplay3 = document.querySelector("[data-js=error-display3]");
 
+//basic calculations(auslagern später)
 const addition = (a, b) => a + b;
 const subtraction = (a, b) => a - b;
 const multiplication = (a, b) => a * b;
@@ -103,3 +104,135 @@ betterForm.addEventListener("submit", (event) => {
     errorDisplay3.textContent = "Else: No known operation";
   }
 });
+
+//Wow calculator "Oldschool Baby"
+console.clear;
+const calculatorDisplay = document.querySelector(
+  "[data-js=calculator-display]"
+);
+let calculateThis = "";
+let operator = "";
+const wowForm = document.querySelector("[data-js=wow-form]");
+const oneButton = document.querySelector("[data-js='1-button']");
+const twoButton = document.querySelector("[data-js='two-button']");
+const threeButton = document.querySelector("[data-js='three-button']");
+const zeroButton = document.querySelector("[data-js='zero-button']");
+const pointButton = document.querySelector("[data-js='point-button']");
+
+const plusButton = document.querySelector("[data-js=plus-button]");
+const minusButton = document.querySelector("[data-js=minus-button]");
+const deleteButton = document.querySelector("[data-js='delete-button']");
+const equalsButton = document.querySelector("[data-js='equals-button']");
+
+const errorDisplay4 = document.querySelector("[data-js=error-display4]");
+
+oneButton.addEventListener("click", (event) => {
+  calculateThis += "1";
+  calculatorDisplay.textContent = calculateThis;
+});
+twoButton.addEventListener("click", (event) => {
+  calculateThis += "2";
+  calculatorDisplay.textContent = calculateThis;
+});
+threeButton.addEventListener("click", (event) => {
+  calculateThis += "3";
+  calculatorDisplay.textContent = calculateThis;
+});
+
+zeroButton.addEventListener("click", (event) => {
+  calculateThis += "0";
+  calculatorDisplay.textContent = calculateThis;
+});
+
+pointButton.addEventListener("click", (event) => {
+  calculateThis += ".";
+  calculatorDisplay.textContent = calculateThis;
+  const integer = calculateThis.split(".")[0];
+  console.log(integer);
+});
+plusButton.addEventListener("click", (event) => {
+  let operator = "+";
+  calculateThis += "+";
+  calculatorDisplay.textContent += "+";
+});
+minusButton.addEventListener("click", (event) => {
+  let operator = "-";
+  calculateThis += "-";
+  calculatorDisplay.textContent = calculateThis;
+});
+
+deleteButton.addEventListener("click", (event) => {
+  let calculateThis = "0";
+  calculatorDisplay.textContent = calculateThis;
+  errorDisplay4.textContent = "Does not really delete as it should yet";
+});
+
+equalsButton.addEventListener("click", (event) => {
+  const test = calculateThis.split("+")[0];
+  // console.log(test);
+});
+
+// attacking the fraction problem
+
+// const fraction = calculateThis.split(".")[1];
+
+function getIntegerString(a) {
+  if (a.includes(".")) {
+    return a.split(".")[0];
+  }
+  return a;
+}
+function getFractionString(a) {
+  if (a.includes(".")) {
+    return a.split(".")[1];
+  }
+  return 0;
+}
+
+function getInteger(a) {
+  if (a.includes(".")) {
+    return Number(a.split(".")[0]);
+  }
+  return Number(a);
+}
+function getFraction(a) {
+  if (a.includes(".")) {
+    return Number(a.split(".")[1]);
+  }
+  return 0;
+}
+
+const testV = "18.79";
+/* console.log(getInteger(testV));
+console.log(getFraction(testV)); */
+
+function addFractions(a, b) {
+  const aDecimalPlaces = Number(`${getFraction(a)}`.length);
+  const bDecimalPlaces = Number(`${getFraction(b)}`.length);
+  console.log(aDecimalPlaces, bDecimalPlaces);
+  let integerSum = addition(getInteger(a), getInteger(b));
+  const fractionTest = addition(getFraction(a), getFraction(b));
+  if (aDecimalPlaces > bDecimalPlaces) {
+    console.log("a hat mehr Stellen als b");
+  } else if (aDecimalPlaces < bDecimalPlaces) {
+    console.log("b hat mehr Stellen als a");
+  } else {
+    console.log("a und b haben gleich viele Nachkommastellen");
+  }
+  if (fractionTest < 10) {
+    return Number(integerSum + "." + fractionTest);
+  }
+  /* const fractionToAdd = Number(`${fractionTest}`.substring(0, 1)); */
+  // console.log(fractionToAdd);
+  return integerSum + 1 + "." + `${fractionTest}`.substring(1, 2);
+  errorDisplay4.textContent = "Does not compute correct";
+}
+const x = "9.3856";
+const y = "2.97";
+const z = "1.1";
+const d = "1.2";
+console.log(addFractions(y, x));
+console.log(addFractions(z, d));
+
+/* const testString = "Hallo";
+console.log(testString.substring(0, 1)); */

@@ -24,18 +24,25 @@ form * {
 }
 .wow-form {
   display: grid;
-  grid-template-columns: 12fr 1fr 10fr;
+  grid-template-columns: 10fr 2fr;
+}
+
+.calc-display {
+  border: 1px solid black;
+  width: 400px;
+  height: 50px;
 }
 
 .tasten {
   display: grid;
-  grid-template-columns: 40px 40px 40px 40px;
-  margin: 0.5rem;
+  grid-template-columns: 50px 50px 50px 50px 50px;
+  margin: 0.8rem;
 }
 
 .button {
-  text-align: center;
-  font-size: 1.5rem;
+  /* text-align: center; */
+  text-align: justify;
+  font-size: 1.2rem;
 }
 
 .error {
