@@ -202,29 +202,46 @@ function getFraction(a) {
   return 0;
 }
 
-const testV = "18.79";
-/* console.log(getInteger(testV));
-console.log(getFraction(testV)); */
-
 function addFractions(a, b) {
+  let aFraction = Number(getFraction(a));
+  let bFraction = Number(getFraction(b));
   const aDecimalPlaces = Number(`${getFraction(a)}`.length);
   const bDecimalPlaces = Number(`${getFraction(b)}`.length);
-  console.log(aDecimalPlaces, bDecimalPlaces);
   let integerSum = addition(getInteger(a), getInteger(b));
   const fractionTest = addition(getFraction(a), getFraction(b));
   if (aDecimalPlaces > bDecimalPlaces) {
-    console.log("a hat mehr Stellen als b");
+    const decDiff = subtraction(aDecimalPlaces, bDecimalPlaces);
+    bFraction = getFraction(b) * 10 ** decDiff;
+    const fractionPart = addition(aFraction, bFraction);
+    const maxDecimalCount = aDecimalPlaces + 1;
+    const fractionSum = fractionPart.toString().substring(1, maxDecimalCount);
+    if (fractionPart.toString().length > aDecimalPlaces) {
+      const result = (integerSum += 1) + "." + fractionSum;
+      return result;
+    }
+    const result = integerSum + "." + fractionPart;
+    return result;
   } else if (aDecimalPlaces < bDecimalPlaces) {
-    console.log("b hat mehr Stellen als a");
+    const decDiff = subtraction(bDecimalPlaces, aDecimalPlaces);
+    aFraction = getFraction(a) * 10 ** decDiff;
+    const fractionPart = addition(aFraction, bFraction);
+    const maxDecimalCount = bDecimalPlaces + 1;
+    const fractionSum = fractionPart.toString().substring(1, maxDecimalCount);
+
+    if (fractionPart.toString().length > bDecimalPlaces) {
+      const result = (integerSum += 1) + "." + fractionSum;
+      return result;
+    }
+    const result = integerSum + "." + fractionPart;
+    return result;
   } else {
-    console.log("a und b haben gleich viele Nachkommastellen");
+    // console.log("a und b haben gleich viele Nachkommastellen");
   }
   if (fractionTest < 10) {
     return Number(integerSum + "." + fractionTest);
   }
-  /* const fractionToAdd = Number(`${fractionTest}`.substring(0, 1)); */
-  // console.log(fractionToAdd);
-  return integerSum + 1 + "." + `${fractionTest}`.substring(1, 2);
+  return result;
+  // integerSum + 1 + "." + `${fractionTest}`.substring(1, 2);
   errorDisplay4.textContent = "Does not compute correct";
 }
 const x = "9.3856";
@@ -232,6 +249,8 @@ const y = "2.97";
 const z = "1.1";
 const d = "1.2";
 console.log(addFractions(y, x));
+console.log(addFractions(x, y));
+// console.log("Note: wrong");
 console.log(addFractions(z, d));
 
 /* const testString = "Hallo";
