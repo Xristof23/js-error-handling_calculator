@@ -190,14 +190,14 @@ function getFractionString(a) {
 }
 
 function getInteger(a) {
-  if (a.includes(".")) {
-    return Number(a.split(".")[0]);
+  if (a.toString().includes(".")) {
+    return Number(a.toString().split(".")[0]);
   }
   return Number(a);
 }
 function getFraction(a) {
-  if (a.includes(".")) {
-    return Number(a.split(".")[1]);
+  if (a.toString().includes(".")) {
+    return Number(a.toString().split(".")[1]);
   }
   return 0;
 }
@@ -241,17 +241,18 @@ function addFractions(a, b) {
     return Number(integerSum + "." + fractionTest);
   }
   return result;
-  // integerSum + 1 + "." + `${fractionTest}`.substring(1, 2);
   errorDisplay4.textContent = "Does not compute correct";
 }
+function subtractFractions(a, b) {
+  // const minusb = Number(b * -1);
+  const result = subtraction(a, b);
+  return result;
+}
+
 const x = "9.3856";
 const y = "2.97";
 const z = "1.1";
 const d = "1.2";
-console.log(addFractions(y, x));
-console.log(addFractions(x, y));
-// console.log("Note: wrong");
-console.log(addFractions(z, d));
-
-/* const testString = "Hallo";
-console.log(testString.substring(0, 1)); */
+console.log(subtractFractions(z, d));
+// console.log(addFractions(x, y));
+console.log(subtractFractions("2.1", "5.1"));
